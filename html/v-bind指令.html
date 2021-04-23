@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind指令</title>
+    <style>
+        .active {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body id = "body">
+    <div id="app">
+        <img v-bind:src = "imgSrc">
+        <br>
+        <img :src="imgSrc" alt="" :title = "imgTitle + ` !!! `" 
+        :class = "isActive ? 'active' :''" @click = "tooggleActive">
+        <!-- <img v-show = "age > 18" src = "../image/avatar.jpg" > -->
+        <br>
+        <img :src="imgSrc" alt="" :title = "imgTitle + ` !!! `" 
+        :class = "{active : isActive}" @click = "tooggleActive">
+    </div>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el : "#app",  //id选择器
+            data:{
+                imgSrc : "/image/avatar1.jpg",
+                imgTitle : "JoeSai",
+                isActive : false,
+                // age : 19,
+            },
+            methods : {
+                tooggleActive : function(){
+                    this.isActive = !this.isActive;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
